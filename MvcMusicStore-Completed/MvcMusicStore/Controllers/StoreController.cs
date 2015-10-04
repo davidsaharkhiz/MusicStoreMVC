@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MvcMusicStore.Models;
+using System.Data.Entity;
+
 
 namespace MvcMusicStore.Controllers
 {
@@ -17,7 +19,6 @@ namespace MvcMusicStore.Controllers
         public ActionResult Index()
         {
             var genres = storeDB.Genres.ToList();
-
             return View(genres);
         }
 
@@ -49,8 +50,7 @@ namespace MvcMusicStore.Controllers
         [ChildActionOnly]
         public ActionResult GenreMenu()
         {
-            var genres = storeDB.Genres.ToList();
-
+            List<Genre> genres = storeDB.Genres.Include(g => g.Albums).ToList<Genre>();
             return PartialView(genres);
         }
 
