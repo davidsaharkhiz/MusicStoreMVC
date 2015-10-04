@@ -18,7 +18,7 @@ namespace MvcMusicStore.Controllers
 
         public ActionResult Index()
         {
-            var genres = storeDB.Genres.ToList();
+            var genres = storeDB.Genres.Include(g => g.Albums).OrderByDescending(g => g.Albums.Count()).ToList();
             return View(genres);
         }
 
@@ -50,7 +50,7 @@ namespace MvcMusicStore.Controllers
         [ChildActionOnly]
         public ActionResult GenreMenu()
         {
-            List<Genre> genres = storeDB.Genres.Include(g => g.Albums).ToList<Genre>();
+            List<Genre> genres = storeDB.Genres.ToList<Genre>();
             return PartialView(genres);
         }
 
