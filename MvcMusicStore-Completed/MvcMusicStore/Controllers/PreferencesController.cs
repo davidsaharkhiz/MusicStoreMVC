@@ -13,6 +13,16 @@ namespace MvcMusicStore.Controllers
         {
             return View();
         }
+
+        // GET: /Preferences/SetPreferencesAjax
+
+        [HttpPost]
+        [ActionName("SetPreferencesAjax")]
+        public ActionResult SetPreferencesAjax()
+        {
+            //Some Code--Some Code-- - Some Code
+            return View();
+        }
     }
 }
 
