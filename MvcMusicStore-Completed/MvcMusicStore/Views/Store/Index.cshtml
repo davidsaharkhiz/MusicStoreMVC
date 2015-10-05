@@ -8,9 +8,9 @@
     Select from @Model.Genres.Count() genres:</p>
 
 <div id="container">
-    <label for="ddlCategory"><strong>Select a category</strong></label>
+    <label for="ddlCategory"><strong>Changing Sorting Method</strong></label>
     @Html.DropDownListFor(
-    x => x.SelectedItemId,
+    x => x.SelectedSortMethod,
     new SelectList(Model.SortMethods, "Id", "Name")
 )
     <br /><br />
@@ -18,10 +18,3 @@
         @{Html.RenderPartial("SortChoicesResults", Model);}
     </div>
 </div> 
-
-<ul>
-    @foreach (var genre in Model.Genres)
-    {
-        <li>@Html.ActionLink(genre.Name, "Browse", new { genre = genre.Name }) (@genre.Albums.Count())</li>
-    }
-</ul>

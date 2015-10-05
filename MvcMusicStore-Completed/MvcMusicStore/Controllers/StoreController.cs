@@ -20,7 +20,7 @@ namespace MvcMusicStore.Controllers
         [HttpGet]
         public async Task<ActionResult> Index()
         {
-            var model = await this.GetFullAndPartialViewModel();
+            var model = await this.GetViewModel();
             return this.View(model);
         }
 
@@ -28,17 +28,27 @@ namespace MvcMusicStore.Controllers
         public async Task<ActionResult> GetCategoryProducts(string categoryId)
         {
             var lookupId = int.Parse(categoryId);
-            var model = await this.GetFullAndPartialViewModel(lookupId);
+            var model = await this.GetViewModel(lookupId);
             return PartialView("CategoryResults", model);
         }
 
-        private async Task<StoreIndexViewModel> GetFullAndPartialViewModel(int categoryId = 0)
+        private async Task<StoreIndexViewModel> GetViewModel(int categoryId = 0)
         {
             // populate the viewModel and return it
             var viewModel = new StoreIndexViewModel();
-            viewModel.Genres = storeDB.Genres.Include(g => g.Albums).OrderByDescending(g => g.Albums.Count()).ToList();
-            //todo create method get default!
-            viewModel.SortMethods = new List<SortMethod> { new SortMethod(1, "Name"), new SortMethod(2, "Number of Albums")  };
+            switch (viewModel.SelectedSortMethod)
+            {
+                case StoreIndexViewModel.sortByNumberOfAlbums:
+                    viewModel.Genres = storeDB.Genres.Include(g => g.Albums).OrderByDescending(g => g.Albums.Count()).ToList();
+                    break;
+                case StoreIndexViewModel.sortByName:
+                    viewModel.Genres = storeDB.Genres.Include(g => g.Albums).OrderBy(g => g.Name).ToList();
+                    break;
+                default:
+                    viewModel.Genres = storeDB.Genres.Include(g => g.Albums).OrderBy(g => g.Name).ToList();
+                    break;
+            }
+            
             return viewModel;
         }
 
