@@ -25,26 +25,25 @@ namespace MvcMusicStore.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> GetCategoryProducts(string categoryId)
+        public async Task<ActionResult> SortChoicesResults(string sortMethodId)
         {
-            var lookupId = int.Parse(categoryId);
+            var lookupId = int.Parse(sortMethodId);
             var model = await this.GetViewModel(lookupId);
-            return PartialView("CategoryResults", model);
+            return PartialView("SortChoicesResults", model);
         }
 
-        private async Task<StoreIndexViewModel> GetViewModel(int categoryId = 0)
+        private async Task<StoreIndexViewModel> GetViewModel(int selectedSortMethod = StoreIndexViewModel.sortByName)
         {
+
             // populate the viewModel and return it
             var viewModel = new StoreIndexViewModel();
+            viewModel.SelectedSortMethod = selectedSortMethod;
             switch (viewModel.SelectedSortMethod)
             {
                 case StoreIndexViewModel.sortByNumberOfAlbums:
                     viewModel.Genres = storeDB.Genres.Include(g => g.Albums).OrderByDescending(g => g.Albums.Count()).ToList();
                     break;
                 case StoreIndexViewModel.sortByName:
-                    viewModel.Genres = storeDB.Genres.Include(g => g.Albums).OrderBy(g => g.Name).ToList();
-                    break;
-                default:
                     viewModel.Genres = storeDB.Genres.Include(g => g.Albums).OrderBy(g => g.Name).ToList();
                     break;
             }

@@ -8,7 +8,7 @@
     Select from @Model.Genres.Count() genres:</p>
 
 <div id="container">
-    <label for="ddlCategory"><strong>Changing Sorting Method</strong></label>
+    <label for="SelectedSortMethod"><strong>Change Sorting Method</strong></label>
     @Html.DropDownListFor(
     x => x.SelectedSortMethod,
     new SelectList(Model.SortMethods, "Id", "Name")
@@ -18,3 +18,12 @@
         @{Html.RenderPartial("SortChoicesResults", Model);}
     </div>
 </div> 
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#SelectedSortMethod").change(function () {
+            var sortMethodId = $("#SelectedSortMethod").val();
+            $("#dvCategoryResults").load('@(Url.Action("SortChoicesResults", "Store", null, Request.Url.Scheme))?sortMethodId=' + sortMethodId);
+        });
+    });
+</script>  
