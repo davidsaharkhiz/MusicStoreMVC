@@ -8,7 +8,6 @@ namespace MvcMusicStore.Models
     [Bind(Exclude = "AlbumId")]
     public class Album
     {
-        //test
 
         [ScaffoldColumn(false)]
         public int AlbumId { get; set; }

@@ -1,0 +1,20 @@
+﻿@model MvcMusicStore.ViewModels.StoreIndexViewModel
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Id</th>
+            <th>???</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var method in Model.SortMethods)
+        {
+            <tr>
+                <td>@method.Name</td>
+                <td>@method.Id</td>
+                <td>@method</td>
+            </tr>
+        }
+    </tbody>
+</table>  

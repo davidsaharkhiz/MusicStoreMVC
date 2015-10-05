@@ -4,8 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MvcMusicStore.Models;
+using MvcMusicStore.ViewModels;
 using System.Data.Entity;
-
+using System.Threading.Tasks;
 
 namespace MvcMusicStore.Controllers
 {
@@ -16,10 +17,29 @@ namespace MvcMusicStore.Controllers
         //
         // GET: /Store/
 
-        public ActionResult Index()
+        [HttpGet]
+        public async Task<ActionResult> Index()
         {
-            var genres = storeDB.Genres.Include(g => g.Albums).OrderByDescending(g => g.Albums.Count()).ToList();
-            return View(genres);
+            var model = await this.GetFullAndPartialViewModel();
+            return this.View(model);
+        }
+
+        [HttpGet]
+        public async Task<ActionResult> GetCategoryProducts(string categoryId)
+        {
+            var lookupId = int.Parse(categoryId);
+            var model = await this.GetFullAndPartialViewModel(lookupId);
+            return PartialView("CategoryResults", model);
+        }
+
+        private async Task<StoreIndexViewModel> GetFullAndPartialViewModel(int categoryId = 0)
+        {
+            // populate the viewModel and return it
+            var viewModel = new StoreIndexViewModel();
+            viewModel.Genres = storeDB.Genres.Include(g => g.Albums).OrderByDescending(g => g.Albums.Count()).ToList();
+            //todo create method get default!
+            viewModel.SortMethods = new List<SortMethod> { new SortMethod(1, "Name"), new SortMethod(2, "Number of Albums")  };
+            return viewModel;
         }
 
         //
