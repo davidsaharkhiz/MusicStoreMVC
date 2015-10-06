@@ -49,6 +49,9 @@ namespace MvcMusicStore.Controllers
                 case StoreIndexViewModel.sortByName:
                     viewModel.Genres = storeDB.Genres.Include(g => g.Albums).OrderBy(g => g.Name).ToList();
                     break;
+                default:
+                    viewModel.Genres = storeDB.Genres.Include(g => g.Albums).OrderBy(g => g.Name).ToList();
+                    break;
             }
             
             return viewModel;
