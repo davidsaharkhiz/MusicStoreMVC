@@ -53,7 +53,7 @@ ul li a
 
 #main
 {
-	padding: 0 0 15px 10px;
+	padding: 0 70px 15px 10px;
     overflow: hidden;
 }
 
@@ -349,5 +349,5 @@ tr:hover
     display: none;
     z-index: 100;
     border: 1px solid black;
-
+    text-align: left;
 }

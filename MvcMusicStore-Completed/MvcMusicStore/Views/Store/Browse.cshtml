@@ -11,13 +11,12 @@
             $(".album-hover-parent").mouseover(function () {
                 var $popUpSelector = $(this).find(".album-hover-popup");
                 var $parentSelector = $(this);
-                $popUpSelector.show();
                 var parentX = $parentSelector.offset().left;
                 var parentY = $parentSelector.offset().top;
                 var parentWidth = $parentSelector.width();
+                $popUpSelector.show();
                 $popUpSelector.css("top", parentY);
                 $popUpSelector.css("left", parentX + parentWidth + 20);
-                console.log();
             });
             $(".album-hover-parent").mouseout(function () {
                 $(this).find('.album-hover-popup').hide();
