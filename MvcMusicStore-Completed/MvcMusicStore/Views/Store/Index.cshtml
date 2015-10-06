@@ -2,6 +2,19 @@
 @{
     ViewBag.Title = "Store";
 }
+
+@section JavaScript
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#SelectedSortMethod").change(function () {
+                var sortMethodId = $("#SelectedSortMethod").val();
+                $("#dvCategoryResults").load('@(Url.Action("SortChoicesResults", "Store", null, Request.Url.Scheme))?sortMethodId=' + sortMethodId);
+            });
+        });
+    </script>  
+}
+
 <h3>Browse Genres</h3>
 
 <p>
@@ -17,13 +30,4 @@
     <div id="dvCategoryResults">
         @{Html.RenderPartial("SortChoicesResults", Model);}
     </div>
-</div> 
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        $("#SelectedSortMethod").change(function () {
-            var sortMethodId = $("#SelectedSortMethod").val();
-            $("#dvCategoryResults").load('@(Url.Action("SortChoicesResults", "Store", null, Request.Url.Scheme))?sortMethodId=' + sortMethodId);
-        });
-    });
-</script>  
+</div>

@@ -208,7 +208,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Preferences\SetPreferencesAjax.cshtml" />
     <Content Include="Views\Store\SortChoicesResults.cshtml" />
     <Content Include="Views\Store\DetailsPartial.cshtml" />
     <None Include="_bin_deployableAssemblies\x86\sqlcese40.dll" />

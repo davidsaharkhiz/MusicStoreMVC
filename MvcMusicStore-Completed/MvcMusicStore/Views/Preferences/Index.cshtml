@@ -2,22 +2,6 @@
 @{
     ViewBag.Title = "User Preferences";
 }
-@section JavaScript
-{
-    <script type="text/javascript">
-        $.ajax({
-            type: "POST",
-            url: '@Url.Action("SetPreferencesAjax", "Preferences")',
-            contentType: "application/json; charset=utf-8",
-            data: { a: "testing" },
-            dataType: "json",
-            success: function () { alert('Success'); },
-            error: function () { alert('We had experienced an error updating your preferences.'); },
-        });
-    </script>
-}
-
-
 <h2>User Preferences</h2>
-<p>Normally I'd save your preferences to the database, test user, but I doubt you're going to use this app more than once (PROTIP: We don't actually have any music.), so your preferences will expire when your session expires.</p>
+<p>Nothing to see here. Just practicing creating an additional section. I was originally also going to save the user's album sort preferences here, but I figured it'd be better to demonstrate ajax loading of a partial view than focus on the UX for a throwaway demo app.</p>
 

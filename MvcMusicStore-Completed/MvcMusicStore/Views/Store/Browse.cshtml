@@ -3,6 +3,21 @@
 @{
     ViewBag.Title = "Browse Albums";
 }
+
+@section JavaScript
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".album-hover-parent").mouseover(function () {
+                $(this).find('.album-hover-popup').show();
+            });
+            $(".album-hover-parent").mouseout(function () {
+                $(this).find('.album-hover-popup').hide();
+            });
+        });
+    </script>
+
+}
  
 <div class="genre">
     <h3><em>@Model.Name</em> Albums</h3>
@@ -23,13 +38,3 @@
     </ul>
 </div>
 
-<script type="text/javascript">
-    $(document).ready(function () {
-        $(".album-hover-parent").mouseover(function () {
-            $(this).find('.album-hover-popup').show();
-        });
-        $(".album-hover-parent").mouseout(function () {
-            $(this).find('.album-hover-popup').hide();
-        });
-    });
-</script>  
