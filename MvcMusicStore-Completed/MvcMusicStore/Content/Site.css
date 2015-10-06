@@ -24,6 +24,7 @@ body
 	width: 100%;
 	border-bottom: 1px dotted #5D5A53;
 	margin-bottom: 10px;
+    clear: both;
 }
 
 #header h1
@@ -47,16 +48,13 @@ ul li a
 }
 
 #content-wrapper {
-    width: 100%;
+    width: 100%; overflow: hidden;
 }
 
 #main
 {
-	overflow: hidden;
 	padding: 0 0 15px 10px;
-	display: inline-block;
-    vertical-align:top;
-    width: 77%;
+    overflow: hidden;
 }
 
 ul
@@ -220,13 +218,13 @@ a:active
 {
 	font-family: Constantia, Georgia, serif;
 	list-style-type: none;
+    float: left;
 	border-right: #5d5a53 1px dotted;
-	padding-right: 10px;
 	margin: 0 25px 0 0;
-	padding: 0 0 15px 10px;
-    width: 20%;
-    display: inline-block;
-    vertical-align:top;
+	padding: 0 0 10px 10px;
+    width: 120px;
+    vertical-align: top;
+    display: block;
 }
 
 #categories a:link, #categories a:visited
