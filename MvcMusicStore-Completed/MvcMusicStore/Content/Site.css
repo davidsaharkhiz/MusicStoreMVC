@@ -340,12 +340,10 @@ tr:hover
 }
 
 .album-hover-popup {
-    position: absolute;
+    position: fixed;
     background: #fff;
-    top: 60px;
     border-radius: 25px;
     padding: 10px;
-    left: -60px;
     width: 200px;
     min-height: 200px;
     display: none;
