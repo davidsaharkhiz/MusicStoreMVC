@@ -332,3 +332,11 @@ tr:hover
 {
 	background-color: #fff;
 }
+
+/* Pop Ups */
+
+.album-hover-popup {
+
+    display: none;
+
+}

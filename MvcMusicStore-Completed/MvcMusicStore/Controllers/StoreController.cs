@@ -24,7 +24,7 @@ namespace MvcMusicStore.Controllers
             return this.View(model);
         }
 
-        //
+        // Partial View
         // GET /Store/SortChoicesResults?sortMethodId=1
 
         [HttpGet]
@@ -72,7 +72,16 @@ namespace MvcMusicStore.Controllers
         public ActionResult Details(int id)
         {
             var album = storeDB.Albums.Find(id);
+            return View(album);
+        }
 
+        // Partial View
+        // GET /Store/DetailsPartial
+
+        [HttpGet]
+        public async Task<ActionResult> DetailsPartial() //int id
+        {
+            var album = storeDB.Albums.Find(5); //int id
             return View(album);
         }
 

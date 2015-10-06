@@ -10,12 +10,26 @@
     <ul id="album-list">
         @foreach (var album in Model.Albums)
         {
-            <li>
+            <li class="album-hover-parent">
                 <a href="@Url.Action("Details", new { id = album.AlbumId })">
                     <img alt="@album.Title" src="@album.AlbumArtUrl" />
                     <span>@album.Title</span>
                 </a>
+                <div class="album-hover-popup">
+                    @{Html.RenderPartial("DetailsPartial", Model);}
+                </div>
             </li>
         }
     </ul>
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".album-hover-parent").mouseover(function () {
+            $(this).find('.album-hover-popup').show();
+        });
+        $(".album-hover-parent").mouseout(function () {
+            $(this).find('.album-hover-popup').hide();
+        });
+    });
+</script>  
