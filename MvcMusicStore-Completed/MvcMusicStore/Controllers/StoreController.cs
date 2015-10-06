@@ -24,6 +24,9 @@ namespace MvcMusicStore.Controllers
             return this.View(model);
         }
 
+        //
+        // GET /Store/SortChoicesResults?sortMethodId=1
+
         [HttpGet]
         public async Task<ActionResult> SortChoicesResults(string sortMethodId)
         {

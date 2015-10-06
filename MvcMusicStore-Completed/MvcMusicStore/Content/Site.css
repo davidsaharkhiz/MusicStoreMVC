@@ -46,11 +46,17 @@ ul li a
 	font-size: 16px;
 }
 
+#content-wrapper {
+    width: 100%;
+}
+
 #main
 {
 	overflow: hidden;
 	padding: 0 0 15px 10px;
-	float: left;
+	display: inline-block;
+    vertical-align:top;
+    width: 77%;
 }
 
 ul
@@ -217,7 +223,10 @@ a:active
 	border-right: #5d5a53 1px dotted;
 	padding-right: 10px;
 	margin: 0 25px 0 0;
-	float: left;
+	padding: 0 0 15px 10px;
+    width: 20%;
+    display: inline-block;
+    vertical-align:top;
 }
 
 #categories a:link, #categories a:visited
